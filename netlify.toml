@@ -1,0 +1,4 @@
+# Sitio estático de una sola página — sin build.
+[build]
+  publish = "."
+  command = ""
