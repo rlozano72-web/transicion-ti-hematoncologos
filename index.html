@@ -152,24 +152,57 @@
 
   var DECK = [
     { kind: "cover" },
-    { kind: "text", eyebrow: "01 · Contexto", title: "Objetivo de esta hoja de ruta", img: "reception",
-      body: [
-        "Llevar los servicios de TI de Hematoncólogos a un modelo gestionado por BLT (MSP) de forma <b>controlada, sin interrumpir la operación asistencial</b> y con gobierno claro.",
-        "Alcance: infraestructura, red, seguridad, mesa de servicio y operación de los sistemas críticos (HIS / historia clínica, PACS, LIS).",
-        "El marco sigue las mejores prácticas de <b>ITIL v3/4, COBIT y PM²</b>: 6 fases más un bloque transversal de prerrequisitos."
+    { kind: "text", eyebrow: "01 · El reto", title: "Operar TI en una institución de salud es cada vez más exigente", img: "reception",
+      body: ["Hematoncólogos necesita que su tecnología esté disponible, segura y en cumplimiento — sin distraer al equipo de su misión asistencial."],
+      list: [
+        "Disponibilidad 24/7: los sistemas clínicos (HIS, PACS, laboratorio) no pueden detenerse.",
+        "Amenazas crecientes sobre los datos de salud, que exigen monitoreo y respuesta permanentes.",
+        "Carga normativa: Habeas Data (Ley 1581), historia clínica y soberanía de datos.",
+        "Escasez de talento TI especializado y alto costo de la rotación.",
+        "El equipo interno apagando incendios en lugar de habilitar a la operación."
       ] },
-    { kind: "gov", eyebrow: "02 · Gobierno", title: "Quién decide y quién ejecuta", img: "oncologist" },
-    { kind: "timeline", eyebrow: "03 · Cronograma", title: "Las 6 fases en el tiempo",
-      note: "Cronograma indicativo en semanas desde el kickoff. Se confirma en la primera reunión de arranque." },
-    { kind: "phase", pid: "req", n: "0", tf: "Semanas 0–3 · transversal",
-      steps: [
-        "Designar sponsor en cada organización, firmar el acta de inicio y la matriz RACI.",
-        "Entregar inventarios: activos TI, diagramas de red y aplicaciones críticas con RTO/RPO.",
-        "Habilitar accesos administrativos, VPN, Active Directory y bóveda de contraseñas (PAM).",
-        "Desplegar herramientas del MSP (RMM, ticketing PSA, monitoreo, backup, SIEM/EDR) y poblar la CMDB inicial.",
-        "Acordar catálogo de servicios, SLAs, cumplimiento de datos clínicos (Ley 1581), NDA y encargo de tratamiento."
+    { kind: "text", eyebrow: "02 · La propuesta", title: "BLT opera la TI de Hematoncólogos como un servicio gestionado", img: "agreement",
+      body: ["Un único responsable de la operación, con gobierno formal, niveles de servicio garantizados por contrato y salida asegurada."],
+      list: [
+        "Operación y monitoreo <b>24/7</b> con mesa de servicio única y tiempos de respuesta garantizados por SLA.",
+        "Ciberseguridad gestionada: SIEM, EDR, gestión de vulnerabilidades y respuesta a incidentes.",
+        "Gobierno <b>ITIL v3/4</b>: gestión de cambios, problemas, capacidad y mejora continua.",
+        "Cumplimiento del sector salud, con contrato de encargo de tratamiento de datos.",
+        "Costos previsibles: tarifa por servicio, sin sobrecostos de rotación ni infraestructura ociosa.",
+        "Reversibilidad garantizada por contrato — sin lock-in."
+      ] },
+    { kind: "scope", eyebrow: "03 · Alcance técnico", title: "Qué cubre el servicio", img: "server",
+      cards: [
+        ["Infraestructura y centro de datos", "Servidores físicos y virtuales, almacenamiento, virtualización, respaldo y recuperación ante desastres (DRP)."],
+        ["Red y conectividad", "LAN / WAN, WiFi, firewall, VPN, segmentación y desempeño de la red."],
+        ["Ciberseguridad", "SIEM 24/7, EDR / antimalware, gestión de identidades y accesos (IAM / PAM), parches y vulnerabilidades."],
+        ["Sistemas clínicos críticos", "HIS / historia clínica electrónica, PACS (imágenes), LIS (laboratorio) e integraciones."],
+        ["Directorio y puesto de trabajo", "Active Directory, correo, ofimática, endpoints y soporte a usuarios."],
+        ["Mesa de servicio (ITIL)", "Punto único de contacto; gestión de incidentes, peticiones, problemas y cambios."]
+      ] },
+    { kind: "prereqs", eyebrow: "04 · Antes de arrancar", title: "Prerrequisitos — sin esto la transición no puede iniciar",
+      intro: "Reunir estos elementos en las primeras 3 semanas es responsabilidad conjunta. Cada línea indica quién lo entrega y en qué semana.",
+      ti: [
+        ["Inventario de activos TI: servidores, red, almacenamiento, endpoints y licencias", "Sem 1–2"],
+        ["Diagramas de arquitectura y topología de red actualizados", "Sem 1–2"],
+        ["Inventario de aplicaciones y sistemas críticos con RTO / RPO (HIS, PACS, LIS)", "Sem 1–2"],
+        ["Accesos administrativos: VPN, Active Directory, consola de virtualización, IAM", "Sem 2–3"],
+        ["Cuentas privilegiadas mapeadas y bóveda de contraseñas (PAM) acordada", "Sem 2–3"],
+        ["Interlocutor técnico dedicado y matriz de escalamiento 24/7", "Sem 1"],
+        ["Ambiente de pruebas / piloto disponible y replicable", "Sem 2–3"]
       ],
-      entreg: ["Acta de inicio + RACI firmada", "Inventarios técnicos y diagramas", "Matriz de accesos y PAM", "CMDB inicial", "Catálogo de servicios + SLAs", "NDA + anexo de datos personales"] },
+      gg: [
+        ["Sponsor ejecutivo designado y acta de inicio firmada", "Sem 1"],
+        ["Matriz RACI del proyecto aprobada", "Sem 1"],
+        ["NDA y contrato de encargo de tratamiento de datos personales firmados", "Sem 2–4"],
+        ["Presupuesto aprobado y contrato / orden de compra", "Sem 3–8"],
+        ["Personal afectado identificado y plan de gestión del cambio avalado", "Sem 2–4"]
+      ],
+      blt: "BLT despliega y opera: agentes RMM, plataforma de tickets (PSA), monitoreo, backup, SIEM / EDR, CMDB inicial, catálogo de servicios y SLAs."
+    },
+    { kind: "gov", eyebrow: "05 · Gobierno", title: "Quién decide y quién ejecuta", img: "oncologist" },
+    { kind: "timeline", eyebrow: "06 · Cronograma", title: "Las 6 fases en el tiempo",
+      note: "Cronograma indicativo en semanas desde el kickoff. Se confirma en la primera reunión de arranque." },
     { kind: "phase", pid: "f1", n: "1", tf: "Semanas 1–3",
       steps: [
         "Confirmar objetivos de negocio y qué capacidades retiene Hematoncólogos vs. qué asume BLT.",
@@ -224,7 +257,27 @@
         "Aplicar el modelo BOT (Build-Operate-Transfer) si se acuerda."
       ],
       entreg: ["Plan de Salida (60–90 días de antelación)", "Asset Inventory Transfer", "Credential Transfer", "Runbooks actualizados", "Project-End Report + Lecciones Aprendidas"] },
-    { kind: "gates", eyebrow: "10 · Decisiones", title: "Los 5 hitos que aprueba la Gerencia General",
+    { kind: "sla", eyebrow: "13 · Compromiso de servicio", title: "Niveles de servicio garantizados por contrato", img: "dashboard",
+      metrics: [
+        ["Disponibilidad de red y sistemas críticos", "≥ 99.95%"],
+        ["Éxito de backups", "≥ 99%"],
+        ["Cumplimiento de parches", "≥ 98%"],
+        ["Respuesta a incidentes y resolución de tickets", "≥ 95%"],
+        ["Satisfacción del cliente (CSAT)", "≥ 4.7 / 5.0"],
+        ["Análisis de causa raíz (RCA) P1 / P2", "≤ 5 días hábiles"]
+      ],
+      note: "Incentivos por superar objetivos (hasta ~3% de bonificación) y penalidades por fallas crónicas (hasta ~5% de deducción). Reportería mensual y revisión de negocio trimestral (QBR)." },
+    { kind: "text", eyebrow: "14 · Seguridad y cumplimiento", title: "Protección de la información clínica", img: "router",
+      body: ["El servicio se diseña sobre los requisitos regulatorios del sector salud colombiano y estándares internacionales."],
+      list: [
+        "Datos personales y de salud: Ley 1581 de 2012 (Habeas Data) y régimen de historia clínica; contrato de encargo de tratamiento.",
+        "Soberanía de datos: alojamiento y procesamiento según lo pactado; sin subcontratación no autorizada.",
+        "Controles técnicos: cifrado en tránsito y reposo, MFA, gestión de accesos privilegiados (PAM) y segmentación de red.",
+        "Detección y respuesta: SIEM 24/7, EDR en endpoints y servidores, gestión continua de vulnerabilidades.",
+        "Continuidad: backups verificados y plan de recuperación ante desastres (DRP) con RTO / RPO por sistema.",
+        "Prácticas alineadas con ISO/IEC 27001 y controles tipo SOC 2."
+      ] },
+    { kind: "gates", eyebrow: "15 · Decisiones", title: "Los 5 hitos que aprueba la Gerencia General",
       rows: [
         ["Go / No-Go estratégico", "Fin de Fase 1 · Semana 3", "Autoriza continuar con la externalización"],
         ["Firma del Contrato Maestro y SLA", "Fin de Fase 3 · Semana 8", "Habilita el arranque de la transición"],
@@ -232,7 +285,7 @@
         ["Revisión trimestral (QBR)", "Recurrente en Fase 5", "Valida SLA, presupuesto y roadmap"],
         ["Decisión de renovación o salida", "Fase 6", "Renovar, renegociar o activar la reversibilidad"]
       ] },
-    { kind: "asks", eyebrow: "11 · Compromisos", title: "Qué necesitamos de Hematoncólogos", img: "agreement",
+    { kind: "asks", eyebrow: "16 · Compromisos", title: "Qué necesitamos de Hematoncólogos", img: "agreement",
       ti: [
         "Inventarios completos y diagramas de red — Semanas 1–2",
         "Accesos administrativos, VPN, AD y consola de virtualización + PAM — Semanas 2–3",
@@ -247,7 +300,20 @@
         "Avalar el plan de gestión del cambio con el personal",
         "Participar en el QBR trimestral"
       ] },
-    { kind: "close", eyebrow: "12 · Cierre", title: "Próximos pasos", img: "hero" }
+    { kind: "benefits", eyebrow: "17 · Cierre", title: "Lo que gana Hematoncólogos", img: "hero",
+      list: [
+        "Continuidad asistencial: la TI deja de ser un riesgo operativo.",
+        "Foco en el paciente: el equipo interno se dedica a la misión, no a apagar incendios.",
+        "Seguridad y cumplimiento gestionados, auditables y reportados.",
+        "Costos previsibles y capacidad que escala con la institución.",
+        "Un socio con gobierno formal y salida garantizada."
+      ],
+      steps: [
+        "Reunión de arranque (kickoff) para confirmar cronograma y equipos.",
+        "Gerencia TI inicia la entrega de inventarios y accesos (Semana 1–2).",
+        "Gerencia General designa sponsor y firma el acta de inicio y la RACI (Semana 1).",
+        "Seguimiento del avance en el checklist y de acuerdos en la hoja de observaciones."
+      ] }
   ];
 
   var CSS = [
@@ -337,6 +403,10 @@
     ".ph-thumb{width:74px;height:74px;border-radius:10px;background-size:cover;background-position:center;flex:none;box-shadow:var(--shadow-sm)}",
     ".ph-meta{flex:1;min-width:0}",
     ".ph-badge{font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--blue-700);padding:2px 8px;border-radius:5px}",
+    "section.phase.prereq{border:2px solid var(--orange-500);box-shadow:0 4px 18px rgba(233,124,42,.18)}",
+    "section.phase.prereq .ph-head{background:var(--orange-100)}",
+    "section.phase.prereq .ph-badge{background:var(--orange-600)}",
+    "section.phase.prereq li.item{border-left-color:var(--orange-500)}",
     ".ph-head h3{margin:7px 0 3px;font-size:1.12rem;font-weight:700;line-height:1.2;text-wrap:balance}",
     ".ph-head .eng{margin:0;font-size:.78rem;color:var(--ink-3);font-style:italic}",
     ".ph-head .gov{margin:5px 0 0;font-size:.75rem;color:var(--ink-2)}",
@@ -441,6 +511,34 @@
     ".close-links{display:flex;flex-direction:column;gap:10px;margin-top:18px;max-width:440px}",
     ".close-links a{text-decoration:none;border:1px solid var(--line);border-radius:9px;padding:12px 14px;color:var(--ink);font-size:.9rem;font-weight:600;display:flex;gap:8px;align-items:center}",
     ".close-links a:hover{border-color:var(--blue-500);color:var(--blue-700)}",
+    "ul.val-list{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:11px}",
+    "ul.val-list li{position:relative;padding-left:27px;font-size:.97rem;color:var(--ink)}",
+    "ul.val-list li::before{content:'';position:absolute;left:0;top:.36em;width:13px;height:13px;border:2px solid var(--orange-500);border-radius:4px}",
+    "ul.val-list li b{color:var(--blue-800)}",
+    ".scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}",
+    ".scope-card{border:1px solid var(--line);border-left:3px solid var(--blue-600);border-radius:10px;padding:14px 15px}",
+    ".scope-card h4{margin:0 0 5px;font-family:'Bricolage Grotesque',sans-serif;font-size:.96rem;color:var(--blue-900)}",
+    ".scope-card p{margin:0;font-size:.85rem;color:var(--ink-2)}",
+    ".prereq-intro{font-size:.98rem;color:var(--ink-2);margin:0 0 18px;max-width:72ch}",
+    ".prereq-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}",
+    ".prereq-col{border:1px solid var(--line);border-radius:12px;overflow:hidden}",
+    ".prereq-col .hd{padding:10px 14px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;font-weight:500}",
+    ".prereq-col.ti .hd{background:var(--orange-500)}",
+    ".prereq-col.gg .hd{background:var(--blue-700)}",
+    ".prereq-col ul{list-style:none;margin:0;padding:6px}",
+    ".prereq-col li{display:flex;gap:10px;align-items:center;padding:9px 8px;font-size:.87rem}",
+    ".prereq-col li+li{border-top:1px solid var(--line)}",
+    ".prereq-col li .chk{flex:none;width:15px;height:15px;border:1.5px solid var(--ink-3);border-radius:5px}",
+    ".prereq-col li .tx{flex:1}",
+    ".prereq-col li .wn{flex:none;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line);border-radius:99px;padding:2px 8px;white-space:nowrap}",
+    ".prereq-blt{margin-top:16px;background:var(--blue-100);border-radius:10px;padding:12px 14px;font-size:.86rem;color:var(--ink-2)}",
+    ".prereq-blt b{color:var(--blue-800);font-family:'IBM Plex Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:4px}",
+    ".sla-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}",
+    ".sla-card{border:1px solid var(--line);border-top:3px solid var(--good);border-radius:10px;padding:15px}",
+    ".sla-card .num{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.55rem;color:var(--blue-800);line-height:1}",
+    ".sla-card .lb{font-size:.8rem;color:var(--ink-2);margin-top:7px}",
+    ".sla-note{margin-top:16px;background:var(--orange-100);border-radius:10px;padding:12px 14px;font-size:.85rem;color:var(--ink-2)}",
+    "@media (max-width:880px){.scope-grid,.prereq-cols{grid-template-columns:1fr}.sla-cards{grid-template-columns:1fr 1fr}}",
     "@media (max-width:880px){.wrap{grid-template-columns:1fr;gap:20px}.rail{position:static}nav.phases{display:none}.s-grid,.gov-grid,.two-col{grid-template-columns:1fr}.s-split{grid-template-columns:1fr}.s-photo{grid-column:1;grid-row:1;min-height:180px;border-left:0;border-bottom:1px solid var(--line)}.s-split .pad{grid-column:1}.tl-row,.tl-scale{grid-template-columns:120px 1fr}.slide .pad{padding:26px 22px}}",
     "@media (prefers-reduced-motion:reduce){*{transition:none!important}}",
     "@media print{.tabbar,.dctl,footer,.rail{display:none!important}.slide{display:block!important;page-break-after:always;box-shadow:none;border:0}#v-checklist{display:none!important}.s-photo{-webkit-print-color-adjust:exact;print-color-adjust:exact}}"
@@ -626,8 +724,8 @@
     main.appendChild(strip);
 
     DATA.forEach(function (p, pi) {
-      var sec = el("section", "phase"); sec.id = p.id;
-      var badge = p.id === "req" ? "Prerrequisitos" : "Fase " + pi + " de 6";
+      var sec = el("section", "phase" + (p.id === "req" ? " prereq" : "")); sec.id = p.id;
+      var badge = p.id === "req" ? "★ Prerrequisitos · lo primero" : "Fase " + pi + " de 6";
       sec.innerHTML =
         '<div class="ph-head">' +
           '<div class="ph-thumb" style="background-image:' + bg(p.img) + '"></div>' +
@@ -834,7 +932,49 @@
     var inner;
     if (s.kind === "text") {
       inner = '<p class="s-eyebrow">' + esc(s.eyebrow) + '</p><h2>' + esc(s.title) + '</h2>' +
-        s.body.map(function (b) { return '<p class="s-body">' + b + '</p>'; }).join("");
+        (s.body || []).map(function (b) { return '<p class="s-body">' + b + '</p>'; }).join("") +
+        (s.list ? '<ul class="val-list">' + s.list.map(function (x) { return '<li>' + x + '</li>'; }).join("") + '</ul>' : "");
+      return splitWrap(inner, s.img);
+    }
+    if (s.kind === "scope") {
+      inner = '<p class="s-eyebrow">' + esc(s.eyebrow) + '</p><h2>' + esc(s.title) + '</h2>' +
+        '<div class="scope-grid">' + s.cards.map(function (c) {
+          return '<div class="scope-card"><h4>' + esc(c[0]) + '</h4><p>' + esc(c[1]) + '</p></div>';
+        }).join("") + '</div>';
+      return splitWrap(inner, s.img);
+    }
+    if (s.kind === "prereqs") {
+      var col = function (cls, hd, rows) {
+        return '<div class="prereq-col ' + cls + '"><div class="hd">' + esc(hd) + '</div><ul>' +
+          rows.map(function (r) { return '<li><span class="chk"></span><span class="tx">' + esc(r[0]) + '</span><span class="wn">' + esc(r[1]) + '</span></li>'; }).join("") +
+          '</ul></div>';
+      };
+      inner = '<p class="s-eyebrow">' + esc(s.eyebrow) + '</p><h2>' + esc(s.title) + '</h2>' +
+        '<p class="prereq-intro">' + esc(s.intro) + '</p>' +
+        '<div class="prereq-cols">' +
+          col("ti", "Entrega la Gerencia TI de Hematoncólogos", s.ti) +
+          col("gg", "Entrega la Gerencia General de Hematoncólogos", s.gg) +
+        '</div>' +
+        '<div class="prereq-blt"><b>Lo que aporta BLT</b>' + esc(s.blt) + '</div>';
+      return '<div class="pad">' + inner + '</div>';
+    }
+    if (s.kind === "sla") {
+      inner = '<p class="s-eyebrow">' + esc(s.eyebrow) + '</p><h2>' + esc(s.title) + '</h2>' +
+        '<div class="sla-cards">' + s.metrics.map(function (m) {
+          return '<div class="sla-card"><div class="num">' + esc(m[1]) + '</div><div class="lb">' + esc(m[0]) + '</div></div>';
+        }).join("") + '</div>' +
+        '<div class="sla-note">' + esc(s.note) + '</div>';
+      return splitWrap(inner, s.img);
+    }
+    if (s.kind === "benefits") {
+      inner = '<p class="s-eyebrow">' + esc(s.eyebrow) + '</p><h2>' + esc(s.title) + '</h2>' +
+        '<ul class="val-list">' + s.list.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join("") + '</ul>' +
+        '<h3 style="margin-top:22px">Próximos pasos</h3>' +
+        '<ol class="s-steps" style="max-width:66ch">' + s.steps.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join("") + '</ol>' +
+        '<div class="close-links">' +
+          '<a href="#checklist" id="goChecklist">Ver el checklist detallado (87 puntos)</a>' +
+          '<a href="' + SHEET_URL + '" data-sheet="1" style="border-color:var(--orange-400)">Hoja de observaciones compartida</a>' +
+        '</div>';
       return splitWrap(inner, s.img);
     }
     if (s.kind === "gov") {
